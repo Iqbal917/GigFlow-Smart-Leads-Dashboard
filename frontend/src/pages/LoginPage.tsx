@@ -58,9 +58,6 @@ const LoginPage = () => {
       <div className="w-full max-w-md z-10">
         <div className="glass-card rounded-2xl p-8 sm:p-10">
           <div className="flex flex-col items-center mb-8">
-            <div className="w-12 h-12 bg-primary-100 dark:bg-primary-900/50 rounded-xl flex items-center justify-center mb-4">
-              <Activity className="w-8 h-8 text-primary-600 dark:text-primary-400" />
-            </div>
             <h1 className="text-3xl font-bold text-slate-900 dark:text-white tracking-tight text-center">
               Welcome to GigFlow
             </h1>

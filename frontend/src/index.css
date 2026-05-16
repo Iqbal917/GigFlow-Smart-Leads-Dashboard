@@ -26,8 +26,18 @@
     @apply antialiased scroll-smooth;
   }
   body {
-    @apply bg-gray-50 text-slate-900 transition-colors duration-300 dark:bg-dark-bg dark:text-dark-text;
+    @apply bg-gray-50 text-slate-900 dark:bg-dark-bg dark:text-dark-text;
     font-family: 'Inter', sans-serif;
+  }
+  
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation: none;
+    mix-blend-mode: normal;
+  }
+
+  ::view-transition-new(root) {
+    z-index: 9999;
   }
 }
 
