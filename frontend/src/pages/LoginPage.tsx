@@ -9,7 +9,6 @@ import { useAuthStore } from '../store/authStore';
 import { Input } from '../components/ui/Input';
 import { Button } from '../components/ui/Button';
 import { ThemeToggle } from '../components/ThemeToggle';
-import { Activity } from 'lucide-react';
 
 const loginSchema = z.object({
   email: z.string().email('Invalid email address'),

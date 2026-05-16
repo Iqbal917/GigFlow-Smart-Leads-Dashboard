@@ -10,7 +10,7 @@ import { Input } from '../components/ui/Input';
 import { Button } from '../components/ui/Button';
 import { Select } from '../components/ui/Select';
 import { ThemeToggle } from '../components/ThemeToggle';
-import { Activity } from 'lucide-react';
+
 
 const registerSchema = z.object({
   name: z.string().min(2, 'Name must be at least 2 characters'),
