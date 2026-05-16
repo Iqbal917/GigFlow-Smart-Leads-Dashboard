@@ -36,6 +36,15 @@ router.post(
 router.get('/', getLeads);
 
 /**
+ * EXPORT CSV (ADMIN ONLY)
+ */
+router.get(
+  '/export',
+  allowRoles(['admin']),
+  exportLeadsCSV
+);
+
+/**
  * GET SINGLE LEAD
  */
 router.get('/:id', getLeadById);
@@ -58,13 +67,6 @@ router.delete(
   deleteLead
 );
 
-/**
- * EXPORT CSV (ADMIN ONLY)
- */
-router.get(
-  '/export',
-  allowRoles(['admin']),
-  exportLeadsCSV
-);
+
 
 export default router;

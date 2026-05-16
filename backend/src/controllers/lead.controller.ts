@@ -240,7 +240,7 @@ export const exportLeadsCSV = async (
                 ? { createdAt: 1 }
                 : { createdAt: -1 };
 
-        const leads = await Lead.find(query).sort(sortOption);
+        const leads = await Lead.find(query).sort(sortOption).lean();
 
         const fields = [
             'name',
@@ -265,6 +265,7 @@ export const exportLeadsCSV = async (
 
         return res.send(csv);
     } catch (error) {
+        console.error('Export CSV Error:', error);
         res.status(500).json({
             success: false,
             message: 'Export failed'
