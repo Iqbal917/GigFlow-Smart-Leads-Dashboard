@@ -4,17 +4,23 @@ dotenv.config();
 import mongoose from 'mongoose';
 import app from './app';
 
-const PORT = process.env.PORT || 5000;
+const PORT = Number(process.env.PORT) || 5000;
+
+const MONGO_URI = process.env.MONGO_URI;
+
+if (!MONGO_URI) {
+  throw new Error('MONGO_URI is not defined');
+}
 
 mongoose
-  .connect(process.env.MONGO_URI as string)
+  .connect(MONGO_URI)
   .then(() => {
     console.log('MongoDB Connected');
 
-    app.listen(PORT, () => {
-      console.log(`Server running on ${PORT}`);
+    app.listen(PORT, '0.0.0.0', () => {
+      console.log(`Server running on port ${PORT}`);
     });
   })
   .catch((error) => {
-    console.error(error);
+    console.error('MongoDB connection error:', error);
   });
