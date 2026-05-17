@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import bcrypt from 'bcryptjs';
 
-import User from '../models/User';
+import User, { UserRole } from '../models/User';
 import { generateToken } from '../utils/generateToken';
 
 export const register = async (
@@ -32,7 +32,7 @@ export const register = async (
       name,
       email,
       password: hashedPassword,
-      role: 'sales'
+      role: UserRole.SALES
     });
 
     const token = generateToken(
