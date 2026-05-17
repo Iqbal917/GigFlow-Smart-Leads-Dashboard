@@ -2,6 +2,8 @@
 
 GigFlow is a full-stack, smart lead management dashboard designed with a focus on rich aesthetics, dynamic user experience, and seamless role-based access control.
 
+🌐 **Live Demo**: [https://gig-flow-kappa-three.vercel.app/](https://gig-flow-kappa-three.vercel.app/)
+
 ## 🚀 Features
 
 ### Core Capabilities
