@@ -42,7 +42,7 @@ export const register = async (
     const cookieOptions = {
       httpOnly: true,
       secure: process.env.NODE_ENV === 'production',
-      sameSite: 'strict' as const,
+      sameSite: process.env.NODE_ENV === 'production' ? ('none' as const) : ('lax' as const),
       maxAge: 30 * 24 * 60 * 60 * 1000 // 30 days
     };
 
@@ -100,7 +100,7 @@ export const login = async (
     const cookieOptions = {
       httpOnly: true,
       secure: process.env.NODE_ENV === 'production',
-      sameSite: 'strict' as const,
+      sameSite: process.env.NODE_ENV === 'production' ? ('none' as const) : ('lax' as const),
       maxAge: 30 * 24 * 60 * 60 * 1000 // 30 days
     };
 
@@ -125,6 +125,8 @@ export const logout = async (
 ) => {
   res.cookie('token', '', {
     httpOnly: true,
+    secure: process.env.NODE_ENV === 'production',
+    sameSite: process.env.NODE_ENV === 'production' ? ('none' as const) : ('lax' as const),
     expires: new Date(0)
   });
 
