@@ -10,7 +10,6 @@ import { registerUser } from '../services/auth.service';
 import { useAuthStore } from '../store/authStore';
 import { Input } from '../components/ui/Input';
 import { Button } from '../components/ui/Button';
-import { Select } from '../components/ui/Select';
 import { ThemeToggle } from '../components/ThemeToggle';
 
 // ✅ Updated schema with confirm password check
@@ -20,7 +19,6 @@ const registerSchema = z
     email: z.string().email('Invalid email address'),
     password: z.string().min(6, 'Password must be at least 6 characters'),
     confirmPassword: z.string().min(6, 'Confirm your password'),
-    role: z.enum(['admin', 'sales']),
   })
   .refine((data) => data.password === data.confirmPassword, {
     message: "Passwords don't match",
@@ -43,9 +41,6 @@ const RegisterPage = () => {
     formState: { errors },
   } = useForm<RegisterFormValues>({
     resolver: zodResolver(registerSchema),
-    defaultValues: {
-      role: 'sales',
-    },
   });
 
   const onSubmit = async (data: RegisterFormValues) => {
@@ -56,7 +51,6 @@ const RegisterPage = () => {
         name: data.name,
         email: data.email,
         password: data.password,
-        role: data.role,
       });
 
       setAuth(res.user, res.token);
@@ -145,15 +139,7 @@ const RegisterPage = () => {
               </button>
             </div>
 
-            <Select
-              label="Role"
-              {...register('role')}
-              error={errors.role?.message}
-              options={[
-                { value: 'sales', label: 'Sales User' },
-                { value: 'admin', label: 'Administrator' },
-              ]}
-            />
+
 
             <Button
               type="submit"

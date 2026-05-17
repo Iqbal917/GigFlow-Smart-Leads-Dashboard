@@ -12,8 +12,7 @@ export const register = async (
     const {
       name,
       email,
-      password,
-      role
+      password
     } = req.body;
 
     const existingUser =
@@ -33,7 +32,7 @@ export const register = async (
       name,
       email,
       password: hashedPassword,
-      role
+      role: 'sales'
     });
 
     const token = generateToken(

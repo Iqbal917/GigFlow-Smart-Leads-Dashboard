@@ -20,7 +20,6 @@ export const registerUser = async (
     name: string;
     email: string;
     password: string;
-    role: string;
   }
 ) => {
   const response = await api.post(

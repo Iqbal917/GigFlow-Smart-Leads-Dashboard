@@ -16,7 +16,7 @@ GigFlow is a full-stack, smart lead management dashboard designed with a focus o
 - **Micro-Animations**: Smooth transitions, hover effects, and loading states to engage users.
 
 ### Advanced Features
-- **Role-Based Access Control (RBAC)**: Segregated permissions for `admin` and `sales` users.
+- **Role-Based Access Control (RBAC)**: Segregated permissions for `admin` and `sales` users. All new signups are assigned the `sales` role by default.
   - *Sales*: Manage leads.
   - *Admin*: All Sales features + Lead Deletion + CSV Export.
 - **Robust Validations**: End-to-end type safety and validation utilizing `zod` and `react-hook-form`.
@@ -69,13 +69,22 @@ docker-compose up --build -d
 
 ---
 
+## 🔐 Test Login Credentials
+
+| Role  | Email            | Password |
+|-------|------------------|----------|
+| Admin | admin@test.com   | 123456   |
+| Sales | sales@test.com   | 123456   |
+
+---
+
 ## 📖 API Documentation
 
 ### Authentication Routes (`/api/auth`)
 
 #### `POST /register`
-Registers a new user.
-- **Body**: `{ "name": "...", "email": "...", "password": "...", "role": "admin|sales" }`
+Registers a new user. All users are assigned the `sales` role by default.
+- **Body**: `{ "name": "...", "email": "...", "password": "..." }`
 - **Response**: `{ success, token, user }`
 
 #### `POST /login`
